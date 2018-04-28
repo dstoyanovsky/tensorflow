@@ -40,10 +40,10 @@ ExternalProject_Add(jemalloc
     DOWNLOAD_DIR "${DOWNLOAD_LOCATION}"
     BUILD_IN_SOURCE 1
     BUILD_BYPRODUCTS ${jemalloc_STATIC_LIBRARIES}
-    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release --target jemalloc
+    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config ${CMAKE_BUILD_TYPE} --target jemalloc
     INSTALL_COMMAND ${CMAKE_COMMAND} -E echo "Skipping install step."
     CMAKE_CACHE_ARGS
-        -DCMAKE_BUILD_TYPE:STRING=Release
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF
         -Dwith-jemalloc-prefix:STRING=jemalloc_
         -Dwithout-export:BOOL=ON
